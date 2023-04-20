@@ -20,10 +20,11 @@ const Fetch = () => {
           const options: RequestOptions = {
             method: 'GET',
             headers: {
-              'X-RapidAPI-Key': 'e821ea0b2bmsh1ef1acb423ad9aap187f9ajsne5e65b612fa3',
+              'X-RapidAPI-Key': '',
               'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
             }
           };
+          
           
           fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
           .then(response => response.json())
@@ -57,13 +58,33 @@ const Fetch = () => {
           // handle error if needed
           throw new Error("Something went wrong when posting to /movie");
       }
-
   }  
+
+  const getSavedMovies = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:3001/movies", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch movies");
+        }
+        const movies = await response.json();
+        console.log("Fetched movies:", movies);
+        setMovie(movies);
+    } catch (error) {
+        throw new Error("Something went wrong when fetching movies");
+    }
+  }
 
     return (
         <div>
           <button onClick={handleSave}>Handle Save</button>
             <button onClick={getMovie}>Fetch movie</button>
+            <button onClick={getSavedMovies}>Get Saved movies</button>
         </div>
       );
 }
