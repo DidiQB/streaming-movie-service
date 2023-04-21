@@ -4,7 +4,7 @@ const Fetch = () => {
     const [movie, setMovie] = useState ([]);
     const [savedMovie, setSavedMovie] = useState([]); 
 
-    const getMovie = () => {
+    const getMovies = () => {
 
         // const apiKey = process.env.REACT_APP_API_KEY;
         // const hostKey = process.env.REACT_APP_HOST_KEY;
@@ -29,8 +29,8 @@ const Fetch = () => {
           fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
           .then(response => response.json())
           .then(response => {
-            console.log(response[1])
-            setMovie(response[1])
+            console.log(response[5])
+            setMovie(response[5])
           })
           .catch(err => console.error(err));
           
@@ -80,11 +80,74 @@ const Fetch = () => {
     }
   }
 
+  const deleteMovies = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:3001/movie/644257f408f73f90fc879b89", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to delete movie");
+        }
+        const movies = await response.json();
+        console.log("Deleted movies:", movies);
+        setMovie(movies);
+    } catch (error) {
+        throw new Error("Something went wrong when deleting movies");
+    }
+  }
+
+  const getoneMovie = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:3001/movie/64412db049e8c31f000ad1d1", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch movie. Just one");
+        }
+        const movies = await response.json();
+        console.log("Fetched movie. Just one:", movies);
+        setMovie(movies);
+    } catch (error) {
+        throw new Error("Something went wrong when fetching movie. Just one");
+    }
+  }
+
+  const updateMovie = async () => {
+    try {
+        const response = await fetch("http://127.0.0.1:3001/movie/64425352cbe9a578d4f91b21", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to update movie");
+        }
+        const movies = await response.json();
+        console.log("Updated movies:", movies);
+        setMovie(movies);
+    } catch (error) {
+        throw new Error("Something went wrong when updating movies");
+    }
+  }
+
     return (
         <div>
           <button onClick={handleSave}>Handle Save</button>
-            <button onClick={getMovie}>Fetch movie</button>
+            <button onClick={getMovies}>Fetch movies</button>
             <button onClick={getSavedMovies}>Get Saved movies</button>
+            <button onClick={deleteMovies}>Delete movies</button>
+            <button onClick={getoneMovie}>Get one movie</button>
+            <button onClick={updateMovie}>Update movie</button>
         </div>
       );
 }
