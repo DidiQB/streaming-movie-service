@@ -1,3 +1,40 @@
+import { useState, useEffect } from 'react';
+
+interface Movie {
+  title: string;
+  description: string;
+  trailer: string;
+}
+
+interface Props {
+  movieData: Movie;
+}
+
+const Billboard = ({ movieData }: Props) => {
+  return (
+    <div>
+      <iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay'></iframe>
+      <h1>{movieData.title}</h1>
+      <p>{movieData.description}</p>
+    </div>
+  );
+}
+
+export default Billboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useCallback } from 'react';
 // import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
@@ -57,13 +94,3 @@ import FetchBillboard from "./FetchBillboard";
 //   )
 // // }
 // // export default Billboard;
-
-const Billboard = (prop) => {
-    return ( 
-        <div>
-            <FetchBillboard />
-        </div>
-     );
-}
- 
-export default Billboard;

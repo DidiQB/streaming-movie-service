@@ -1,54 +1,99 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import Billboard from './Billboard';
 
-const FetchBillboard = () => {
-    const [movie, setMovie] = useState ([]);
-    const [savedMovie, setSavedMovie] = useState([]); 
+interface Movie {
+  title: string;
+  description: string;
+  trailer: string;
+}
 
-    const getMovies = () => {
+interface Props {
+  setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
+}
 
-        // const apiKey = process.env.REACT_APP_API_KEY;
-        // const hostKey = process.env.REACT_APP_HOST_KEY;
+const FetchBillboard = ({ setMovieData }: Props) => {
+  const getMovies = () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '',
+        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+      }
+    };
 
-        interface RequestOptions {
-            method: string;
-            headers: {
-              'X-RapidAPI-Key': string;
-              'X-RapidAPI-Host': string;
-            }
-          }
-          
-          const options: RequestOptions = {
-            method: 'GET',
-            headers: {
-              'X-RapidAPI-Key': '',
-              'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-            }
-          };
-          
-          
-          fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
-          .then(response => response.json())
-          .then(response => {
-            console.log(response)
-            const movie = response;
-            setMovie(movie);
-          })
-          .catch(err => console.error(err));
+    fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
+      .then(response => response.json())
+      .then(response => {
+        const movies = response;
+        console.log(movies)
+        setMovieData(movies[Math.floor(Math.random() * movies.length)]);
+      })
+      .catch(err => console.error(err));
+  }
 
-          const randomIndex = Math.floor(Math.random() * movie.length)
-          console.log(movie[randomIndex])
-          const randomMovie = (movie[randomIndex])
-          setMovie(randomMovie.title)
-          console.log("movie", setMovie)
-          
-    }
+  useEffect(() => {
+    getMovies();
+  }, []);
 
-    return (
-        <div>
-            <button onClick={getMovies}>Fetch movies</button>
-            <h1>{movie.title}</h1>
-        </div>
-      );
+  return (
+    <div>
+      {/* <Billboard movieData={movieData} /> */}
+    </div>
+  );
 }
 
 export default FetchBillboard;
+
+
+
+
+
+
+
+
+
+// import {useState, useEffect} from 'react';
+// import Billboard from './Billboard';
+
+// interface Movie {
+//     title: string;
+//     description: string;
+//     trailer: string;
+//   }  
+
+// const FetchBillboard = () => {
+//   const [movie, setMovie] = useState<Movie>({ title: '', description: '', trailer: '' });
+
+//   const getMovies = () => {
+//     const options = {
+//       method: 'GET',
+//       headers: {
+//         'X-RapidAPI-Key': 'e821ea0b2bmsh1ef1acb423ad9aap187f9ajsne5e65b612fa3',
+//         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+//       }
+//     };
+
+//     fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
+//       .then(response => response.json())
+//       .then(response => {
+//         const movie = response;
+//         console.log(movie)
+//         setMovie(movie[Math.floor(Math.random() * movie.length)]);
+//       })
+//       .catch(err => console.error(err));
+//   }
+
+//   return (
+//     <div>
+//       {/* <button onClick={getMovies}>Fetch movies</button>
+//       <h1>{movie.title}</h1>
+//       <p>{movie.description}</p>
+//       <iframe src={movie.trailer + "?autoplay=1&mute=1"} allow='autoplay'></iframe>
+//       <iframe src={movie.trailer} autoPlay controls></iframe> */}
+//     <Billboard movieData = {movie} />
+
+//     </div>
+//   );
+// }
+
+// export default FetchBillboard;
