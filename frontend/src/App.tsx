@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import Fetch from './components/Fetch';
 import Navbar from './components/Navbar';
+import Billboard from './components/Billboard';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       {/* <Fetch /> */}
       <Navbar />
+      <Billboard />
     </div>
   )
 }
