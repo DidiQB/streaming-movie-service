@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import FetchBillboard from "./FetchBillboard";
+
 // import PlayButton from '@/components/PlayButton';
 
 interface Movie {
@@ -25,7 +27,7 @@ const Billboard = ({ movieData }: Props) => {
   return (
     <div className="relative h-[56.25vw]">
       {/* {<iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay' autoplay"className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>} */}
-      <iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay' sandbox='allow-scripts allow-same-origin' className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>
+      <iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay' className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>
 
 
       {/* <video poster={data?.thumbnailUrl} className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500" autoPlay muted loop src={data?.videoUrl}></video> */}
@@ -84,7 +86,7 @@ export default Billboard;
 // import React, { useCallback } from 'react';
 // import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
-import FetchBillboard from "./FetchBillboard";
+// import FetchBillboard from "./FetchBillboard";
 
 // // import PlayButton from '@/components/PlayButton';
 // // import useBillboard from '@/hooks/useBillboard';

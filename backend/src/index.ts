@@ -21,10 +21,10 @@ mongoose.connect(`mongodb+srv://coderaiders5:${process.env.MA_PASSWORD}@coderaid
 // ENDPOINTS
 
 // app.get by :id Do we need it???
-app.get('api/movie/:id', async (req, res) => {
+app.get('/movie/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
-        const oneMovie = await Movie.findOne({_id: movieId}); // has to be dynamic
+        const oneMovie = await Movie.findOne({ _id: movieId }); // has to be dynamic
         return res.status(200).json(oneMovie);
     } catch (error: any) {
         res.status(500).json({ message: error.message });
@@ -32,7 +32,7 @@ app.get('api/movie/:id', async (req, res) => {
 });
 
 //HOMEPAGE ON LOAD --> FIGURE OUT HOW
-app.get('api/movies', async (_req, res) => {
+app.get('/movies', async (_req, res) => {
     try {
         const allMovies = await Movie.find();
         return res.status(200).json(allMovies);
@@ -42,7 +42,7 @@ app.get('api/movies', async (_req, res) => {
 });
 
 //HOMEPAGE --> ADD MOVIE TO LIST
-app.post('api/movie', async (req, res) => {
+app.post('/movie', async (req, res) => {
     // console.log(req.body);
     // res.send(req.body);
     try {
@@ -55,23 +55,23 @@ app.post('api/movie', async (req, res) => {
 });
 
 // MY LIST PAGE /movie/favorites/:id
-app.delete('api/movie/:id', async (req, res) => {
+app.delete('/movie/:id', async (req, res) => {
     try {
-      const movieId = req.params.id;
-      const deleteQuote = await Movie.deleteOne({ _id: movieId});
-      if(deleteQuote.deletedCount === 0 ) {
-        return res.status(404).json({message: 'Movie not found'});
-      }
-      res.status(204).json({message: 'Movie deleted succesfully'});
-    } catch (error:any) {
-      res.status(500).json({message: error.mmessage});
+        const movieId = req.params.id;
+        const deleteQuote = await Movie.deleteOne({ _id: movieId });
+        if (deleteQuote.deletedCount === 0) {
+            return res.status(404).json({ message: 'Movie not found' });
+        }
+        res.status(204).json({ message: 'Movie deleted succesfully' });
+    } catch (error: any) {
+        res.status(500).json({ message: error.mmessage });
     }
-   })
+})
 
 // MY LIST PAGE /movie/favorites/:id   
 // app.put - is it by id or do we have to get all of them back - update movie list
 
-app.put('api/movies/', async (req, res) => { 
+app.put('/movies/', async (req, res) => {
     try {
         const updateMovies = await Movie.updateOne({});
         return res.status(200).json(updateMovies);
