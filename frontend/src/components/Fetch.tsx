@@ -20,7 +20,7 @@ const Fetch = () => {
           const options: RequestOptions = {
             method: 'GET',
             headers: {
-            'X-RapidAPI-Key': 'e821ea0b2bmsh1ef1acb423ad9aap187f9ajsne5e65b612fa3',
+            'X-RapidAPI-Key': '',
               'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
             }
           };
