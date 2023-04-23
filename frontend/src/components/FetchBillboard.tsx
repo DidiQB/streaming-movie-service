@@ -1,48 +1,48 @@
-import { useState, useEffect } from 'react';
-import Billboard from './Billboard';
+// import { useState, useEffect } from 'react';
+// import Billboard from './Billboard';
 
-interface Movie {
-  title: string;
-  description: string;
-  trailer: string;
-}
+// interface Movie {
+//   title: string;
+//   description: string;
+//   trailer: string;
+// }
 
-interface Props {
-  setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
-}
+// interface Props {
+//   setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
+// }
 
-const FetchBillboard = ({ setMovieData }: Props) => {
-  const getMovies = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '',
-        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-      }
-    };
+// const FetchBillboard = ({ setMovieData }: Props) => {
+//   const getMovies = () => {
+//     const options = {
+//       method: 'GET',
+//       headers: {
+//         // 'X-RapidAPI-Key': 'e821ea0b2bmsh1ef1acb423ad9aap187f9ajsne5e65b612fa3',
+//         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+//       }
+//     };
 
-    fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
-      .then(response => response.json())
-      .then(response => {
-        const movies = response;
-        console.log(movies)
-        setMovieData(movies[Math.floor(Math.random() * movies.length)]);
-      })
-      .catch(err => console.error(err));
-  }
+//     fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
+//       .then(response => response.json())
+//       .then(response => {
+//         const movies = response;
+//         console.log(movies)
+//         setMovieData(movies[Math.floor(Math.random() * movies.length)]);
+//       })
+//       .catch(err => console.error(err));
+//   }
 
-  useEffect(() => {
-    getMovies();
-  }, []);
+//   useEffect(() => {
+//     getMovies();
+//   }, []);
 
-  return (
-    <div>
-      {/* <Billboard movieData={movieData} /> */}
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       {/* <Billboard movieData={movieData} /> */}
+//     </div>
+//   );
+// }
 
-export default FetchBillboard;
+// export default FetchBillboard;
 
 
 

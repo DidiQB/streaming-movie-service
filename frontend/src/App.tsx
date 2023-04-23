@@ -23,14 +23,16 @@
 import { useState } from 'react';
 import React from 'react';
 import './App.css';
-import FetchBillboard from './components/FetchBillboard';
+import FetchBillboard from './functions/FetchBillboard';
 import Navbar from './components/Navbar';
 import Billboard from './components/Billboard';
+import MovieList from './components/MovieList';
 
 interface Movie {
   title: string;
   description: string;
   trailer: string;
+  
 }
 
 function App() {
@@ -43,7 +45,11 @@ function App() {
       <Navbar />
       <FetchBillboard setMovieData={setMovieData} />
       <Billboard movieData={movieData} />
-    </div>
+      <div className="pb-40">
+        <MovieList movieData={movieData}/>
+        <MovieList movieData={movieData}/>
+      </div>
+      </div>
   );
 }
 
