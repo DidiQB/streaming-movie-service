@@ -59,7 +59,7 @@ function App() {
         {/* <MovieList movie={movie}/> */}
         {/* <MovieList movieData={movieData}/> */}
       </div>
-      {/* <Fetch /> */}
+      <Fetch />
       </div>
   );
 }

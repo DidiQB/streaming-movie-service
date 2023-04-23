@@ -18,6 +18,10 @@ const movieSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        genre: {
+            type: Array,
+            required: true
+        },
         description: {
             type: String,
             required: true
