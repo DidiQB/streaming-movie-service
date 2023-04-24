@@ -26,10 +26,12 @@ import './App.css';
 // import FetchBillboard from './functions/FetchBillboard';
 import Navbar from './components/Navbar';
 import Billboard from './components/Billboard';
-import MovieList from './components/MovieList';
 import FetchBillboard from './components/FetchBillboard';
 import FetchMyList from './components/FetchMyList';
 import Fetch from './components/Fetch';
+import FetchAllMovies from './components/FetchAllMovies';
+
+console.log(import.meta.env.VITE_API_KEY);
 
 interface Movie {
   title: string;
@@ -52,14 +54,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <FetchBillboard setMovieData={setMovieData} />
-      <Billboard movieData={movieData} />
+      {/* <FetchBillboard setMovieData={setMovieData} />
+      <Billboard movieData={movieData} /> */}
       <div className="pb-40">
         <FetchMyList />
-        {/* <MovieList movie={movie}/> */}
-        {/* <MovieList movieData={movieData}/> */}
+        <FetchAllMovies />
       </div>
-      <Fetch />
+      {/* <Fetch /> */}
       </div>
   );
 }

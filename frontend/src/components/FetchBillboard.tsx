@@ -11,13 +11,25 @@ interface Props {
   setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
 }
 
+interface RequestOptions {
+  method: string;
+  headers: {
+  'X-RapidAPI-Key': any;
+  'X-RapidAPI-Host': any;
+  }
+}
+
 const FetchBillboard = ({ setMovieData }: Props) => {
+
+  const API_KEY = import.meta.env.VITE_API_KEY
+  const HOST_KEY = import.meta.env.VITE_HOST_KEY
+
   const getMovies = () => {
-    const options = {
+    const options: RequestOptions = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '',
-        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': HOST_KEY
       }
     };
 
@@ -25,7 +37,7 @@ const FetchBillboard = ({ setMovieData }: Props) => {
       .then(response => response.json())
       .then(response => {
         const movies = response;
-        console.log(movies)
+        // console.log(movies)
         setMovieData(movies[Math.floor(Math.random() * movies.length)]);
       })
       .catch(err => console.error(err));

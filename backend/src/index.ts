@@ -43,28 +43,36 @@ app.get('/movies', async (_req, res) => {
 
 //HOMEPAGE --> ADD MOVIE TO LIST
 app.post('/movie', async (req, res) => {
-    // console.log(req.body);
-    // res.send(req.body);
+    const { imdbid } = req.body;
+  
     try {
-        const movie = await Movie.create(req.body);
-        res.status(201).json(movie);
+      const existingMovie = await Movie.findOne({ imdbid });
+  
+      if (existingMovie) {
+        return res.status(400).json({ message: 'Movie already exists' });
+      }
+  
+      const movie = await Movie.create(req.body);
+      res.status(201).json(movie);
     } catch (error: any) {
-        console.log(error.message);
-        res.status(500).json({ message: error.message });
+      console.log(error.message);
+      res.status(500).json({ message: error.message });
     }
-});
+  });
+  
+
 
 // MY LIST PAGE /movie/favorites/:id
 app.delete('/movie/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
-        const deleteQuote = await Movie.deleteOne({ _id: movieId });
-        if (deleteQuote.deletedCount === 0) {
+        const deleteMovie = await Movie.deleteOne({ _id: movieId });
+        if (deleteMovie.deletedCount === 0) {
             return res.status(404).json({ message: 'Movie not found' });
         }
         res.status(204).json({ message: 'Movie deleted succesfully' });
     } catch (error: any) {
-        res.status(500).json({ message: error.mmessage });
+        res.status(500).json({ message: error.message });
     }
 })
 

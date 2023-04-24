@@ -2,7 +2,7 @@ import React from "react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavButton";
 
-interface MovieDB {
+interface Movie {
   title: string;
   description: string;
   image: string;
@@ -13,10 +13,10 @@ interface MovieDB {
 }
 
 interface Props {
-  data: MovieDB;
+  data: Movie;
 }
 
-const MovieCard = ({ data }: Props) => {
+const AllMovieCard = ({ data }: Props) => {
   return (
     <div className="col-span group relative h-[12vw] bg-zinc-900">
       <img
@@ -104,4 +104,4 @@ const MovieCard = ({ data }: Props) => {
   );
 };
 
-export default MovieCard;
+export default AllMovieCard;

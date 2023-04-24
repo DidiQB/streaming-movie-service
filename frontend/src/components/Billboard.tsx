@@ -27,7 +27,7 @@ const Billboard = ({ movieData }: Props) => {
   return (
     <div className="relative h-[56.25vw]">
       {/* {<iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay' autoplay"className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>} */}
-      <iframe src={movieData.trailer + "?autoplay=1&mute=1"} allow='autoplay' className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>
+      <iframe src={movieData.trailer + "?autoplay=1&mute=1&loop=1"} allow='autoplay' className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>
 
 
       {/* <video poster={data?.thumbnailUrl} className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500" autoPlay muted loop src={data?.videoUrl}></video> */}

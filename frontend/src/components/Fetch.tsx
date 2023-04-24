@@ -1,29 +1,34 @@
 import {useState, useEffect} from 'react';
 
+interface RequestOptions {
+    method: string;
+    headers: {
+    'X-RapidAPI-Key': any;
+    'X-RapidAPI-Host': any;
+    }
+  }
+
 const Fetch = () => {
     const [movie, setMovie] = useState ([]);
     const [savedMovie, setSavedMovie] = useState([]); 
+
 
     const getMovies = () => {
 
         // const apiKey = process.env.REACT_APP_API_KEY;
         // const hostKey = process.env.REACT_APP_HOST_KEY;
 
-        interface RequestOptions {
-            method: string;
-            headers: {
-              'X-RapidAPI-Key': string;
-              'X-RapidAPI-Host': string;
-            }
-          }
           
-          const options: RequestOptions = {
-            method: 'GET',
-            headers: {
-            'X-RapidAPI-Key': '',
-              'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-            }
-          };
+          const API_KEY = import.meta.env.VITE_API_KEY
+          const HOST_KEY = import.meta.env.VITE_HOST_KEY
+        
+            const options: RequestOptions = {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': API_KEY,
+                'X-RapidAPI-Host': HOST_KEY
+              }
+            };
           
           
           fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
@@ -102,7 +107,7 @@ const Fetch = () => {
 
   const getoneMovie = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:3001/movie/64412db049e8c31f000ad1d1", {
+        const response = await fetch(`http://127.0.0.1:3001/movie/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
