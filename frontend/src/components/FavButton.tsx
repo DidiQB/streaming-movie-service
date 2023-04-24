@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 
+// @TODO: Import this interface from somewhere else instead of copy-pasting it
 type Movie = {
   imdbid: string;
   title: string;
@@ -13,8 +14,11 @@ type SavedMovie = Movie & {
 
 type MoviesList = Array<Movie>;
 
-function FavoriteButton() {
-  const [movie, setMovie] = useState<Movie | null>(null);
+type Props = {
+  movie: Movie;
+};
+
+function FavoriteButton({ movie }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const [moviesList, setMoviesList] = useState<MoviesList>([]);
 
@@ -43,12 +47,15 @@ function FavoriteButton() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:3001/movie/${savedMovie!._id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `http://127.0.0.1:3001/movie/${savedMovie!._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to delete movie");
@@ -66,10 +73,10 @@ function FavoriteButton() {
     if (savedMovie) {
       await handleDelete();
     } else {
-      const imdbid = movie!.imdbid;
+      const id = movie._id;
 
       try {
-        const response = await fetch(`http://127.0.0.1:3001/movie/${imdbid}`, {
+        const response = await fetch(`http://127.0.0.1:3001/movie/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -96,9 +103,11 @@ function FavoriteButton() {
 
   return (
     <div>
-      <button onClick={handleClick}>{savedMovie ? "Remove" : "Add"} Movie</button>
+      <button onClick={handleClick}>
+        {savedMovie ? "Remove" : "Add"} Movie
+      </button>
     </div>
   );
 }
- 
+
 export default FavoriteButton;

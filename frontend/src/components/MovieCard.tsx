@@ -89,7 +89,7 @@ const MovieCard = ({ data }: Props) => {
             >
               <PlayIcon className="w-4 text-black lg:w-6" />
             </div>
-            {/* <FavoriteButton /> */}
+            <FavoriteButton movie={data} />
             {/* <FavoriteButton imdbid={data._id} /> */}
             <p className="mt-4 font-semibold text-green-400">
               Release <span className="text-white">{data.year}</span>

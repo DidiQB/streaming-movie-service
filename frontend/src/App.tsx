@@ -54,8 +54,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <FetchBillboard setMovieData={setMovieData} />
-      <Billboard movieData={movieData} /> */}
+      <FetchBillboard setMovieData={setMovieData} />
+      <Billboard movieData={movieData} />
       <div className="pb-40">
         <FetchMyList />
         <FetchAllMovies />

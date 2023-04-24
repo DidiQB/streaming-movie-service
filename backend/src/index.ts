@@ -24,9 +24,11 @@ mongoose.connect(`mongodb+srv://coderaiders5:${process.env.MA_PASSWORD}@coderaid
 app.get('/movie/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
+        console.log(movieId);
         const oneMovie = await Movie.findOne({ _id: movieId }); // has to be dynamic
         return res.status(200).json(oneMovie);
     } catch (error: any) {
+        console.log(error.stack)
         res.status(500).json({ message: error.message });
     }
 });
