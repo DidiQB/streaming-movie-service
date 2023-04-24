@@ -1,19 +1,10 @@
 import React from "react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavButton";
-
-interface MovieDB {
-  title: string;
-  description: string;
-  image: string;
-  genre: string;
-  _id: string;
-  year: number;
-  imdbid: string;
-}
+import { Movie } from "@/types/types";
 
 interface Props {
-  data: MovieDB;
+  data: Movie;
 }
 
 const MovieCard = ({ data }: Props) => {

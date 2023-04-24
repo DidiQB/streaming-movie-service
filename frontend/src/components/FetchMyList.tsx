@@ -1,22 +1,13 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
-
-interface MovieDB {  
-  title: string;
-  description: string;
-  image: string;
-  genre: string;
-  _id: string;
-  year: number;
-  imdbid: string
-}
+import { Movie } from "@/types/types";
 
 interface Props {
-  setMovie: React.Dispatch<React.SetStateAction<MovieDB>>;
+  setMovie: React.Dispatch<React.SetStateAction<Movie>>;
 }
 
 const FetchMyList = () => {
-  const [movies, setMovies] = useState<MovieDB[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   const getSavedMovies = async () => {
     try {

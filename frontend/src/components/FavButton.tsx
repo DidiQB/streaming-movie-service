@@ -1,12 +1,5 @@
 import { useState } from "react";
-
-// @TODO: Import this interface from somewhere else instead of copy-pasting it
-type Movie = {
-  imdbid: string;
-  title: string;
-  year: string;
-  _id: string;
-};
+import { Movie } from "@/types/types";
 
 type SavedMovie = Movie & {
   _id: string;

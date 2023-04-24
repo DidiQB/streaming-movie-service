@@ -1,25 +1,3 @@
-// import { useState } from 'react';
-// import React from 'react';
-// import './App.css';
-// import Fetch from './components/Fetch';
-// import Navbar from './components/Navbar';
-// import Billboard from './components/Billboard';
-
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <div className="App">
-//       {/* <Fetch /> */}
-//       <Navbar />
-//       <Billboard />
-//     </div>
-//   )
-// }
-
-// export default App;
-
 import { useState } from 'react';
 import React from 'react';
 import './App.css';
@@ -30,26 +8,11 @@ import FetchBillboard from './components/FetchBillboard';
 import FetchMyList from './components/FetchMyList';
 import Fetch from './components/Fetch';
 import FetchAllMovies from './components/FetchAllMovies';
-
-console.log(import.meta.env.VITE_API_KEY);
-
-interface Movie {
-  title: string;
-  description: string;
-  trailer: string;
-}
-
-interface MovieDB {
-  title: string;
-  description: string;
-  thumbnail: string;
-  genre: string;
-}
+import { Movie } from './types/types';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [movieData, setMovieData] = useState<Movie>({ title: '', description: '', trailer: '' });
-  const [movie, setMovie] = useState<MovieDB>({ title: '', description: '', thumbnail: '', genre: '' });
+  const [movieData, setMovieData] = useState<Movie>();
+  const [movie, setMovie] = useState<Movie>();
 
   return (
     <div className="App">

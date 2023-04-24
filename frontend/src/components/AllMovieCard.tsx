@@ -1,16 +1,8 @@
 import React from "react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavButton";
+import { Movie } from '@/types/types';
 
-interface Movie {
-  title: string;
-  description: string;
-  image: string;
-  genre: string;
-  _id: string;
-  year: number;
-  imdbid: string;
-}
 
 interface Props {
   data: Movie;

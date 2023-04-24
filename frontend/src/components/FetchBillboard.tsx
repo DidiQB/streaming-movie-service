@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
 import Billboard from './Billboard';
+import { Movie } from '@/types/types';
 
-interface Movie {
-  title: string;
-  description: string;
-  trailer: string;
-}
 
-interface Props {
-  setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
-}
+interface Props {}
 
 interface RequestOptions {
   method: string;
@@ -19,7 +13,8 @@ interface RequestOptions {
   }
 }
 
-const FetchBillboard = ({ setMovieData }: Props) => {
+const FetchBillboard = (props: Props) => {
+  const [movieData, setMovieData] = useState<Movie>();
 
   const API_KEY = import.meta.env.VITE_API_KEY
   const HOST_KEY = import.meta.env.VITE_HOST_KEY
@@ -49,7 +44,7 @@ const FetchBillboard = ({ setMovieData }: Props) => {
 
   return (
     <div>
-      {/* <Billboard movieData={movieData} /> */}
+      <Billboard movieData={movieData} />
     </div>
   );
 }
@@ -57,53 +52,54 @@ const FetchBillboard = ({ setMovieData }: Props) => {
 export default FetchBillboard;
 
 
-
-
-
-
-
-
-
-// import {useState, useEffect} from 'react';
+// import { useState, useEffect } from 'react';
 // import Billboard from './Billboard';
+// import { Movie } from '@/types/types';
 
-// interface Movie {
-//     title: string;
-//     description: string;
-//     trailer: string;
-//   }  
 
-// const FetchBillboard = () => {
-//   const [movie, setMovie] = useState<Movie>({ title: '', description: '', trailer: '' });
+// interface Props {
+//   setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
+// }
+
+// interface RequestOptions {
+//   method: string;
+//   headers: {
+//   'X-RapidAPI-Key': any;
+//   'X-RapidAPI-Host': any;
+//   }
+// }
+
+// const FetchBillboard = ({ setMovieData }: Props) => {
+
+//   const API_KEY = import.meta.env.VITE_API_KEY
+//   const HOST_KEY = import.meta.env.VITE_HOST_KEY
 
 //   const getMovies = () => {
-//     const options = {
+//     const options: RequestOptions = {
 //       method: 'GET',
 //       headers: {
-//         'X-RapidAPI-Key': '',
-//         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+//         'X-RapidAPI-Key': API_KEY,
+//         'X-RapidAPI-Host': HOST_KEY
 //       }
 //     };
 
 //     fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
 //       .then(response => response.json())
 //       .then(response => {
-//         const movie = response;
-//         console.log(movie)
-//         setMovie(movie[Math.floor(Math.random() * movie.length)]);
+//         const movies = response;
+//         // console.log(movies)
+//         setMovieData(movies[Math.floor(Math.random() * movies.length)]);
 //       })
 //       .catch(err => console.error(err));
 //   }
 
+//   useEffect(() => {
+//     getMovies();
+//   }, []);
+
 //   return (
 //     <div>
-//       {/* <button onClick={getMovies}>Fetch movies</button>
-//       <h1>{movie.title}</h1>
-//       <p>{movie.description}</p>
-//       <iframe src={movie.trailer + "?autoplay=1&mute=1"} allow='autoplay'></iframe>
-//       <iframe src={movie.trailer} autoPlay controls></iframe> */}
-//     <Billboard movieData = {movie} />
-
+//       {/* <Billboard movieData={movieData} /> */}
 //     </div>
 //   );
 // }
