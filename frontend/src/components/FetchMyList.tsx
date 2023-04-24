@@ -7,6 +7,7 @@ interface MovieDB {
   image: string;
   genre: string;
   imdbid: string;
+  year: number;
 }
 
 interface Props {

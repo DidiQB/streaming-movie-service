@@ -82,7 +82,7 @@ const Fetch = () => {
 
   const deleteMovies = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:3001/movie/644257f408f73f90fc879b89", {
+        const response = await fetch("http://127.0.0.1:3001/movie/64412db049e8c31f000ad1d1", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
