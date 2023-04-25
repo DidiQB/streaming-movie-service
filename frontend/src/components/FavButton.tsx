@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Movie } from "@/types/types";
 
 type SavedMovie = Movie & {
-  _id: string;
+  imdbid: string;
 };
 
 type MoviesList = Array<Movie>;
@@ -41,7 +41,7 @@ function FavoriteButton({ movie }: Props) {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:3001/movie/${savedMovie!._id}`,
+        `http://127.0.0.1:3001/movie/${savedMovie!.imdbid}`,
         {
           method: "DELETE",
           headers: {
@@ -56,42 +56,52 @@ function FavoriteButton({ movie }: Props) {
 
       console.log("Deleted movie:", savedMovie);
       setSavedMovie(null);
-      setMoviesList(moviesList.filter((m) => m._id !== savedMovie!._id));
+      setMoviesList(moviesList.filter((m) => m.imdbid !== savedMovie!.imdbid));
     } catch (error) {
       throw new Error("Something went wrong when deleting movie");
     }
   };
 
   const handleClick = async () => {
-    if (savedMovie) {
-      await handleDelete();
-    } else {
-      const id = movie._id;
+    const id = movie.imdbid;
+    console.log("id in Fav Button", id);
 
-      try {
-        const response = await fetch(`http://127.0.0.1:3001/movie/${id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+    try {
+      const response = await fetch(`http://127.0.0.1:3001/movie/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch movie. Just one");
-        }
-
-        const existingMovie = await response.json();
-
-        if (existingMovie) {
-          console.log("Movie already exists:", existingMovie);
-          setSavedMovie(existingMovie);
-        } else {
-          await handleSave();
-        }
-      } catch (error) {
-        throw new Error("Something went wrong when fetching movie. Just one");
+      if (!response.ok) {
+        throw new Error("Failed to fetch movie. Just one");
       }
+
+      const existingMovie = await response.json();
+      console.log("existing movie", existingMovie)
+
+      if (existingMovie) {
+        console.log("Movie already exists:", existingMovie);
+        setSavedMovie(existingMovie);
+      } else if (!existingMovie) {
+        await handleSave();
+      } else {
+        await handleDelete();
+      }
+      
+    } catch (error) {
+      throw new Error("Something went wrong when fetching movie. Just one");
     }
+
+    // if (savedMovie) {
+    //   await handleDelete();
+    // } else {
+    //   await handleSave();
+
+  
+
+    // }
   };
 
   return (

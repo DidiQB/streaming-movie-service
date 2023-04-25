@@ -25,7 +25,8 @@ app.get('/movie/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
         console.log(movieId);
-        const oneMovie = await Movie.findOne({ _id: movieId }); // has to be dynamic
+        // const oneMovie = await Movie.findOne({ _id: movieId });
+        const oneMovie = await Movie.findOne({ imdbid: movieId }); // has to be dynamic
         return res.status(200).json(oneMovie);
     } catch (error: any) {
         console.log(error.stack)
@@ -68,7 +69,8 @@ app.post('/movie', async (req, res) => {
 app.delete('/movie/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
-        const deleteMovie = await Movie.deleteOne({ _id: movieId });
+        // const deleteMovie = await Movie.deleteOne({ _id: movieId });
+        const deleteMovie = await Movie.deleteOne({ imdbid: movieId });
         if (deleteMovie.deletedCount === 0) {
             return res.status(404).json({ message: 'Movie not found' });
         }

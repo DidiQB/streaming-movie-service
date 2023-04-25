@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AllMovieCard from "./AllMovieCard";
 import { Movie } from "@/types/types";
+import MovieCard from "./MovieCard";
 
 
 interface Props {
@@ -46,7 +47,10 @@ const FetchAllMovies = () => {
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">Trending List</p>
         <div className="grid grid-cols-4 gap-2">
           {movies.map((movie) => (
-            <AllMovieCard key={movie.imdbid} data={movie} />
+            // <AllMovieCard key={movie.imdbid} data={movie} />
+            <MovieCard key={movie.imdbid} data={movie} />
+
+
           ))}
         </div>
       </div>
