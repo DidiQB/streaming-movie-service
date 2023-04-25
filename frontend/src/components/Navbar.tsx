@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BellIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
+import { BrowserRouter, Link, Routes, Route, useNavigate } from "react-router-dom";
+
 import AccountMenu from '@/components/AccountMenu';
 import MobileMenu from '@/components/MobileMenu';
 import NavbarItem from '@/components/NavbarItem';
@@ -11,6 +13,12 @@ const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  // const links = [
+  //   { name: "Home", link: "/" },
+  //   { name: "Browse by Genre", link: "/browse" },
+  // ];
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +55,11 @@ const Navbar = () => {
           <NavbarItem label="Films" />
           <NavbarItem label="New & Popular" />
           <NavbarItem label="My List" />
-          <NavbarItem label="Browse by Languages" />
+          {/* <NavbarItem label="Browse by Genre" /> */}
+          <Link onClick={() => navigate("/")} to="/">Home</Link>
+          <Link onClick={() => navigate("/browse")} to="/browse">Browse by Genre</Link>
+          {/* <button onClick={() => navigate("/browse")} >Browse by Genre</button> */}
+
         </div>
         <div onClick={toggleMobileMenu} className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
           <p className="text-white text-sm">Browse</p>

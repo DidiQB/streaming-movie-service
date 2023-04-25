@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AllMovieCard from "./AllMovieCard";
 import { Movie } from "@/types/types";
 import MovieCard from "./MovieCard";
+import Genres from "@/pages/Genres";
 
 
 interface Props {
@@ -54,6 +55,7 @@ const FetchAllMovies = () => {
           ))}
         </div>
       </div>
+      {/* <Genres data={movie}/> */}
     </div>
   );
 };
