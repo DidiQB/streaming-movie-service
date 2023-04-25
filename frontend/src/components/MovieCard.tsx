@@ -3,11 +3,14 @@ import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavButton";
 import { Movie } from "@/types/types";
 
-interface Props {
+type Props = {
   data: Movie;
+  setMovies: React.Dispatch<React.SetStateAction<Movie>>;
 }
 
-const MovieCard = ({ data }: Props) => {
+
+
+const MovieCard = ({ data, setMovies }: Props) => {
   return (
     <div className="col-span group relative h-[12vw] bg-zinc-900">
       <img
@@ -80,7 +83,7 @@ const MovieCard = ({ data }: Props) => {
             >
               <PlayIcon className="w-4 text-black lg:w-6" />
             </div>
-            <FavoriteButton movie={data} />
+            <FavoriteButton movie={data} setMovies={setMovies}/>
             {/* <FavoriteButton imdbid={data._id} /> */}
             <p className="mt-4 font-semibold text-green-400">
               Release <span className="text-white">{data.year}</span>

@@ -50,14 +50,17 @@ const Navbar = () => {
       <div className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${showBackground ? 'bg-zinc-900 bg-opacity-90' : ''}`}>
         <img src="./src/assets/logo.png" className="h-4 lg:h-7" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" active />
+          {/* <NavbarItem label="Home" active />
           <NavbarItem label="Series" />
           <NavbarItem label="Films" />
           <NavbarItem label="New & Popular" />
-          <NavbarItem label="My List" />
+          <NavbarItem label="My List" /> */}
           {/* <NavbarItem label="Browse by Genre" /> */}
-          <Link onClick={() => navigate("/")} to="/">Home</Link>
-          <Link onClick={() => navigate("/browse")} to="/browse">Browse by Genre</Link>
+          <div>
+          <Link className="text-gray-200 hover:text-gray-300 cursor-pointer transition" onClick={() => navigate("/")} to="/">Home</Link>
+          <Link className="text-gray-200 hover:text-gray-300 cursor-pointer transition" onClick={() => navigate("/browse")} to="/browse">Browse by Genre</Link>
+          <Link className="text-gray-200 hover:text-gray-300 cursor-pointer transition" onClick={() => navigate("/my-list")} to="/my-list">My List</Link>
+          </div>
           {/* <button onClick={() => navigate("/browse")} >Browse by Genre</button> */}
 
         </div>

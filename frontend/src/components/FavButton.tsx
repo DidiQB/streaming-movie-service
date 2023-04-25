@@ -9,9 +9,10 @@ type MoviesList = Array<Movie>;
 
 type Props = {
   movie: Movie;
+  setMovies: React.Dispatch<React.SetStateAction<Movie>>;
 };
 
-function FavoriteButton({ movie }: Props) {
+function FavoriteButton({ movie, setMovies }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const [moviesList, setMoviesList] = useState<MoviesList>([]);
 
@@ -32,6 +33,7 @@ function FavoriteButton({ movie }: Props) {
       const savedMovie = await response.json();
       setSavedMovie(savedMovie);
       setMoviesList([...moviesList, savedMovie]);
+      // setMovies(savedMovie);
       console.log("Saved movie:", savedMovie);
     } catch (error) {
       throw new Error("Something went wrong when posting to /movie");

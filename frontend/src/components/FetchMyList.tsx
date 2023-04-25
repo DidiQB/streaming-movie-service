@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { Movie } from "@/types/types";
 
-interface Props {
-  setMovie: React.Dispatch<React.SetStateAction<Movie>>;
-}
+// interface Props {
+//   setMovies: React.Dispatch<React.SetStateAction<Movie>>;
+// }
 
 const FetchMyList = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -39,7 +39,7 @@ const FetchMyList = () => {
     <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">My list</p>
     <div className="grid grid-cols-4 gap-2">
       {movies.map((movie) => (
-          <MovieCard key={movie.imdbid} data={movie} />
+          <MovieCard key={movie.imdbid} data={movie} setMovies={setMovies}/>
         // <div key={movie.title}>
         //   <img src={movie.image} alt="" />
         //   <p>{movie.title}</p>
