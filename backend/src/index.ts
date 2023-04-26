@@ -34,6 +34,54 @@ app.get('/movie/:id', async (req, res) => {
     }
 });
 
+// interface MovieQuery {
+//     title?: string;
+//     year?: number;
+//   }
+  
+//   app.get('/movie', async (req, res) => {
+//     try {
+//       const { title } = req.query;
+//       const query: MovieQuery = {};
+//       if (typeof title === 'string') {
+//         query.title = title;
+//       }
+//       const oneMovie = await Movie.findOne(query);
+//       return res.status(200).json(oneMovie);
+//     } catch (error: any) {
+//       console.log(error.stack);
+//       res.status(500).json({ message: error.message });
+//     }
+//   });
+
+app.get('/movie', async (req, res) => {
+    try {
+      const { title } = req.query;
+      const query: MovieQuery = {};
+      if (typeof title === 'string') {
+        query.title = { $regex: title, $options: 'i' }; // using regex to perform case-insensitive search
+      }
+      const movies = await Movie.find(query);
+      return res.status(200).json(movies);
+    } catch (error: any) {
+      console.log(error.stack);
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  interface MovieQuery {
+      title?: {
+          $regex: string;
+          $options: string;
+      };
+      year?: number;
+  }
+  
+
+  
+  
+
+
 //HOMEPAGE ON LOAD --> FIGURE OUT HOW
 app.get('/movies', async (_req, res) => {
     try {

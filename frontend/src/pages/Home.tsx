@@ -22,7 +22,6 @@ const Home = () => {
         <FetchMyList />
         <FetchAllMovies />
       </div>
-      {/* <Fetch /> */}
       </div>
     </div>);
 }

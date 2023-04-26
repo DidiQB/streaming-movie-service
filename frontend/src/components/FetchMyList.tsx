@@ -40,12 +40,6 @@ const FetchMyList = () => {
     <div className="grid grid-cols-4 gap-2">
       {movies.map((movie) => (
           <MovieCard key={movie.imdbid} data={movie} setMovies={setMovies}/>
-        // <div key={movie.title}>
-        //   <img src={movie.image} alt="" />
-        //   <p>{movie.title}</p>
-        //   <p>{movie.description}</p>
-        //   <p>{movie.genre}</p>
-        // </div>
       ))}
           </div>
     </div>

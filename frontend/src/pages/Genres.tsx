@@ -82,7 +82,7 @@ const Genres = () => {
             <option value="Action">Action</option>
             <option value="Sci-Fi">Sci-Fi</option>
           </select>
-          <p className="text-white">{selectedGenre}</p>
+          {/* <p className="text-white">{selectedGenre}</p> */}
         </div>
         <div className="grid grid-cols-4 gap-2">
           {filteredMovies.map((movie) => (
@@ -97,41 +97,3 @@ const Genres = () => {
 
 export default Genres;
 
-
-
-// import MovieCard from "@/components/MovieCard";
-// import { Movie } from "@/types/types";
-// import { SetStateAction } from "react";
-
-// type Props = {
-//   data: Movie[];
-// };
-
-// const Genres = (data: Props) => {
-//   // console.log("data in Genres", data)
-
-//   const movies = Object.values(data.data);
-//   console.log("array in Genres", movies);
-
-//   return (
-//     <div className="mt-4 space-y-8 px-4 md:px-12">
-//       <div>
-//         <p className="text-md mb-4 font-semibold text-white md:text-xl lg:text-2xl">
-//           All movies by Genre
-//         </p>
-
-//         {/* <p className="text-white">{movies[0].title}</p> */}
-//         {/* <div className="grid grid-cols-4 gap-2">
-//               {movies.map((movie) => (
-//                 // <AllMovieCard key={movie.imdbid} data={movie} />
-//                 <MovieCard key={movie.imdbid} data={movie} />
-    
-    
-//               ))}
-//             </div> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Genres;
