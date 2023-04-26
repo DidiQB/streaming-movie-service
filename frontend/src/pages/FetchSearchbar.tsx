@@ -33,7 +33,8 @@ const FetchSearchbar = () => {
     const fetchMovies = async () => {
       const response = await fetch(
         // `https://imdb-top-100-movies.p.rapidapi.com/movies?q=${searchTerm}`
-        `http://localhost:3001/movie?title=${searchTerm}`,
+        `http://localhost:3001/search?title=${searchTerm}`
+        ,
         options
       );
       const data = await response.json();

@@ -89,6 +89,9 @@ const MovieCard = ({ data, setMovies }: Props) => {
               Release <span className="text-white">{data.year}</span>
             </p>
           </div>
+          <div className="mt-4 flex flex-row items-center gap-2 text-[10px] text-white lg:text-sm font-semibold">
+          <p>{data.title}</p>
+          </div>
           <div className="mt-4 flex flex-row items-center gap-2 text-[8px] text-white lg:text-sm">
             <p>{data.genre}</p>
           </div>
