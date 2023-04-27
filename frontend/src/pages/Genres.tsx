@@ -5,18 +5,6 @@ import MovieCard from "@/components/MovieCard";
 import { MovieContext } from "@/context/Context";
 
 
-interface Props {
-  setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
-}
-
-interface RequestOptions {
-  method: string;
-  headers: {
-    'X-RapidAPI-Key': any;
-    'X-RapidAPI-Host': any;
-  }
-}
-
 // ---- started editing here
 
 const Genres = () => {
@@ -26,34 +14,11 @@ const Genres = () => {
 
   const {movies, setMovies} = useContext(MovieContext);
 
-
-  // const API_KEY = import.meta.env.VITE_API_KEY
-  // const HOST_KEY = import.meta.env.VITE_HOST_KEY
-
-  // const options: RequestOptions = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Key': API_KEY,
-  //     'X-RapidAPI-Host': HOST_KEY
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetch(/*'https://imdb-top-100-movies.p.rapidapi.com/'*/ `http://localhost:3001/search`, options)
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     const movies = response;
-    //     console.log("movies in FetchAllMovies", movies)
-        setMovies(movies);
-        setFilteredMovies(movies);
-      // })
-      // .catch(err => console.error(err));
-  }, []);
-
+  
   const handleSelectGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGenre(e.target.value);
   };
-
+  
   useEffect(() => {
     // if (selectedGenre === '') {
     //   setFilteredMovies(movies);
@@ -61,10 +26,12 @@ const Genres = () => {
     //   const filtered = movies.filter(movie => movie.genre === selectedGenre);
     //   setFilteredMovies(filtered);
     // }
+    setMovies(movies);
+    setFilteredMovies(movies);
 
     selectedGenre === '' ? setFilteredMovies(movies) : setFilteredMovies(movies.filter(movie => movie.genre.includes(selectedGenre)));
 
-  }, [filteredMovies, selectedGenre]);
+  }, [movies, selectedGenre]);
 
   return (
     <div className="px-4 md:px-12 mt-4 space-y-8">
