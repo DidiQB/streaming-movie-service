@@ -64,28 +64,28 @@ const Navbar = () => {
         <div className="ml-8 hidden flex-row gap-7 lg:flex">
           <div>
             <Link
-              className="cursor-pointer text-gray-200 transition hover:text-gray-300"
+              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
               onClick={() => navigate("/")}
               to="/"
             >
               Home
             </Link>
             <Link
-              className="cursor-pointer text-gray-200 transition hover:text-gray-300"
+              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
               onClick={() => navigate("/browse")}
               to="/browse"
             >
               Browse by Genre
             </Link>
             <Link
-              className="cursor-pointer text-gray-200 transition hover:text-gray-300"
+              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
               onClick={() => navigate("/my-list")}
               to="/my-list"
             >
               My List
             </Link>
             <Link
-              className="cursor-pointer text-gray-200 transition hover:text-gray-300"
+              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
               onClick={() => navigate("/search")}
               to="/search"
             >

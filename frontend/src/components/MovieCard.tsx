@@ -88,14 +88,14 @@ const MovieCard = ({ data, movies, setMovies }: Props) => {
             <FavoriteButton movie={data} setMovies={setMovies} movies={movies}/>
             {/* <FavoriteButton imdbid={data._id} /> */}
             <p className="mt-4 font-semibold text-green-400">
-              Release <span className="text-white">{data.year}</span>
+              Year <span className="text-white">{data.year}</span>
             </p>
           </div>
-          <div className="mt-4 flex flex-row items-center gap-2 text-[10px] text-white lg:text-sm font-semibold">
+          <div className="mt-4 flex flex-row items-center gap-2 text-[10px] text-white lg:text-xl font-semibold">
           <p>{data.title}</p>
           </div>
-          <div className="mt-4 flex flex-row items-center gap-2 text-[8px] text-white lg:text-sm">
-            <p>{data.genre}</p>
+          <div className="mt-4 flex flex-row items-center gap-2 text-[8px] text-white lg:text-base">
+            <p>{data.genre.join(", ")}</p>
           </div>
         </div>
       </div>

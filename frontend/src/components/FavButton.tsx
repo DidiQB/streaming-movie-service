@@ -18,8 +18,6 @@ function FavoriteButton({ movie, setMovies, movies }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const [moviesList, setMoviesList] = useState<MoviesList>([]);
 
-  // const {setMovies} = useContext(MovieContext)
-
 const handleSave = async () => {
     try {
       const response = await fetch("http://127.0.0.1:3001/movie", {
@@ -90,14 +88,16 @@ const handleSave = async () => {
 
       if (existingMovie) {
         console.log("Movie already exists:", existingMovie);
-        setSavedMovie(existingMovie);
-      } else if (!savedMovie) {
+        setSavedMovie(existingMovie);}
+
+       if (!existingMovie) {
         await handleSave();
       } else {
         await handleDelete();
-      }
+      } 
+    }
       
-    } catch (error) {
+     catch (error) {
       throw new Error("Something went wrong when fetching movie. Just one");
     }
 

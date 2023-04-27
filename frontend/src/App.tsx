@@ -11,13 +11,14 @@ import Home from "./pages/Home";
 import MyList from "./pages/MyList";
 import FetchSearchbar from "./pages/FetchSearchbar";
 import MoviesProvider from "./context/Context";
-
+import Navbar from "./components/Navbar";
 
 
 function App() {
   return (
     <MoviesProvider>
     <BrowserRouter>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/my-list" element={<MyList />}></Route>
