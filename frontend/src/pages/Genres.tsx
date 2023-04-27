@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 // import AllMovieCard from "./AllMovieCard";
 import { Movie } from "@/types/types";
 import MovieCard from "@/components/MovieCard";
+import { MovieContext } from "@/context/Context";
 
 
 interface Props {
@@ -19,32 +20,34 @@ interface RequestOptions {
 // ---- started editing here
 
 const Genres = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  // const [movies, setMovies] = useState<Movie[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<string>('');
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
 
+  const {movies, setMovies} = useContext(MovieContext);
 
-  const API_KEY = import.meta.env.VITE_API_KEY
-  const HOST_KEY = import.meta.env.VITE_HOST_KEY
 
-  const options: RequestOptions = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': API_KEY,
-      'X-RapidAPI-Host': HOST_KEY
-    }
-  };
+  // const API_KEY = import.meta.env.VITE_API_KEY
+  // const HOST_KEY = import.meta.env.VITE_HOST_KEY
+
+  // const options: RequestOptions = {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-RapidAPI-Key': API_KEY,
+  //     'X-RapidAPI-Host': HOST_KEY
+  //   }
+  // };
 
   useEffect(() => {
-    fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
-      .then(response => response.json())
-      .then(response => {
-        const movies = response;
-        console.log("movies in FetchAllMovies", movies)
+    // fetch(/*'https://imdb-top-100-movies.p.rapidapi.com/'*/ `http://localhost:3001/search`, options)
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     const movies = response;
+    //     console.log("movies in FetchAllMovies", movies)
         setMovies(movies);
         setFilteredMovies(movies);
-      })
-      .catch(err => console.error(err));
+      // })
+      // .catch(err => console.error(err));
   }, []);
 
   const handleSelectGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {

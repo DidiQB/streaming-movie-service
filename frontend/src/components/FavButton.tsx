@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Movie } from "@/types/types";
+import { MovieContext } from "@/context/Context";
 
 type SavedMovie = Movie & {
   imdbid: string;
@@ -12,9 +13,11 @@ type Props = {
   setMovies: React.Dispatch<React.SetStateAction<Movie>>;
 };
 
-function FavoriteButton({ movie, setMovies }: Props) {
+function FavoriteButton({ movie /*, setMovies*/ }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const [moviesList, setMoviesList] = useState<MoviesList>([]);
+
+  const {setMovies} = useContext(MovieContext)
 
   const handleSave = async () => {
     try {

@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
-import AllMovieCard from "./AllMovieCard";
+import { useState, useEffect, useContext } from "react";
 import { Movie } from "@/types/types";
-import MovieCard from "./MovieCard";
+import MovieCard from "./MovieCard"; 
 import Genres from "@/pages/Genres";
+import { MovieContext } from "@/context/Context";
 
 
-interface Props {
-  setMovieData: React.Dispatch<React.SetStateAction<Movie>>;
-}
 
 interface RequestOptions {
   method: string;
@@ -18,7 +15,9 @@ interface RequestOptions {
 }
 
 const FetchAllMovies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  // const [movies, setMovies] = useState<Movie[]>([]);
+  const {movies, setMovies} = useContext(MovieContext)
+
 
   const API_KEY = import.meta.env.VITE_API_KEY
   const HOST_KEY = import.meta.env.VITE_HOST_KEY
@@ -32,7 +31,7 @@ const FetchAllMovies = () => {
   };
 
   useEffect(() => {
-    fetch('https://imdb-top-100-movies.p.rapidapi.com/', options)
+    fetch(/*'https://imdb-top-100-movies.p.rapidapi.com/'*/ `http://localhost:3001/search`, options)
       .then(response => response.json())
       .then(response => {
         const movies = response;
@@ -41,6 +40,7 @@ const FetchAllMovies = () => {
       })
       .catch(err => console.error(err));
   }, []);
+
 
   return (
     <div className="px-4 md:px-12 mt-4 space-y-8">

@@ -14,7 +14,7 @@ interface RequestOptions {
 }
 
 const FetchBillboard = (props: Props) => {
-  const [movieData, setMovieData] = useState<Movie>();
+  const [oneMovie, setOneMovie] = useState<Movie>();
 
   const API_KEY = import.meta.env.VITE_API_KEY
   const HOST_KEY = import.meta.env.VITE_HOST_KEY
@@ -33,7 +33,7 @@ const FetchBillboard = (props: Props) => {
       .then(response => {
         const movies = response;
         // console.log(movies)
-        setMovieData(movies[Math.floor(Math.random() * movies.length)]);
+        setOneMovie(movies[Math.floor(Math.random() * movies.length)]);
       })
       .catch(err => console.error(err));
   }
@@ -44,7 +44,7 @@ const FetchBillboard = (props: Props) => {
 
   return (
     <div>
-      <Billboard movieData={movieData} />
+      <Billboard oneMovie={oneMovie} />
     </div>
   );
 }
