@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Movie } from "@/types/types";
 import { MovieContext } from "@/context/Context";
 
@@ -10,16 +10,17 @@ type MoviesList = Array<Movie>;
 
 type Props = {
   movie: Movie;
-  setMovies: React.Dispatch<React.SetStateAction<Movie>>;
+  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  movies: Movie[]
 };
 
-function FavoriteButton({ movie /*, setMovies*/ }: Props) {
+function FavoriteButton({ movie, setMovies, movies }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const [moviesList, setMoviesList] = useState<MoviesList>([]);
 
-  const {setMovies} = useContext(MovieContext)
+  // const {setMovies} = useContext(MovieContext)
 
-  const handleSave = async () => {
+const handleSave = async () => {
     try {
       const response = await fetch("http://127.0.0.1:3001/movie", {
         method: "POST",
@@ -36,12 +37,13 @@ function FavoriteButton({ movie /*, setMovies*/ }: Props) {
       const savedMovie = await response.json();
       setSavedMovie(savedMovie);
       setMoviesList([...moviesList, savedMovie]);
-      // setMovies(savedMovie);
+      // setMovies([...movies, savedMovie]);
       console.log("Saved movie:", savedMovie);
     } catch (error) {
       throw new Error("Something went wrong when posting to /movie");
     }
   };
+
 
   const handleDelete = async () => {
     try {
@@ -54,7 +56,7 @@ function FavoriteButton({ movie /*, setMovies*/ }: Props) {
           },
         }
       );
-
+        console.log("response delete", response)
       if (!response.ok) {
         throw new Error("Failed to delete movie");
       }
@@ -78,7 +80,7 @@ function FavoriteButton({ movie /*, setMovies*/ }: Props) {
           "Content-Type": "application/json",
         },
       });
-
+      console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch movie. Just one");
       }
@@ -89,7 +91,7 @@ function FavoriteButton({ movie /*, setMovies*/ }: Props) {
       if (existingMovie) {
         console.log("Movie already exists:", existingMovie);
         setSavedMovie(existingMovie);
-      } else if (!existingMovie) {
+      } else if (!savedMovie) {
         await handleSave();
       } else {
         await handleDelete();

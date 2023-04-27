@@ -16,7 +16,6 @@ import {
 import AccountMenu from "@/components/AccountMenu";
 import MobileMenu from "@/components/MobileMenu";
 import NavbarItem from "@/components/NavbarItem";
-import Search from "./Searchbar";
 import FetchSearchbar from "../pages/FetchSearchbar";
 
 const TOP_OFFSET = 66;

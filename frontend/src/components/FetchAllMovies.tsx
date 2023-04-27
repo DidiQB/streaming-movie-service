@@ -55,7 +55,7 @@ const FetchAllMovies = () => {
           ))}
         </div>
       </div>
-      <Genres /*data={movies}*//>
+      {/* <Genres /*data={movies}*/}
     </div>
   );
 };

@@ -6,11 +6,12 @@ import { Movie } from "@/types/types";
 type Props = {
   data: Movie;
   setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  movies: Movie[]
 }
 
 
 
-const MovieCard = ({ data /*, setMovies */ }: Props) => {
+const MovieCard = ({ data, movies, setMovies }: Props) => {
 
   return (
     <div className="col-span group relative h-[12vw] bg-zinc-900">
@@ -84,7 +85,7 @@ const MovieCard = ({ data /*, setMovies */ }: Props) => {
             >
               <PlayIcon className="w-4 text-black lg:w-6" />
             </div>
-            <FavoriteButton movie={data} /*setMovies={setMovies}*//>
+            <FavoriteButton movie={data} setMovies={setMovies} movies={movies}/>
             {/* <FavoriteButton imdbid={data._id} /> */}
             <p className="mt-4 font-semibold text-green-400">
               Release <span className="text-white">{data.year}</span>
