@@ -26,7 +26,7 @@ function App() {
             <Route path="/my-list" element={<MyList />}></Route>
             <Route path="/browse" element={<Genres />}></Route>
             <Route path="/search" element={<FetchSearchbar />}></Route>
-            <Route path="/watch/:imdbId" element={<Watch />}></Route>
+            <Route path="/watch/:movieId" element={<Watch />}></Route>
           </Routes>
         </BrowserRouter>
       </FavoriteMovieListContextProvider>

@@ -7,6 +7,7 @@ import {
     Route,
     useNavigate,
   } from "react-router-dom";
+import Watch from '@/pages/Watch';
 
 interface PlayButtonProps {
   movieId: string;
@@ -16,6 +17,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
   const navigate = useNavigate();
 
   return (
+    <div>
     <button 
         onClick={() => navigate(`/watch/${movieId}`)} 
       className="
@@ -36,6 +38,8 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         <PlayIcon className="w-4 md:w-7 text-black mr-1" />
         Play
     </button>
+    {/* <Watch movieId={movieId} /> */}
+    </div>
   );
 }
 
