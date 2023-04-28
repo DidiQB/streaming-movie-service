@@ -10,10 +10,6 @@ body {
   @apply h-full;
 }
 
-/* #root {
-  @apply h-full;
-} */
-
 html {
   @apply h-full;
 }

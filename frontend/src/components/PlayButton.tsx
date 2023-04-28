@@ -1,13 +1,6 @@
-import React from 'react';
-import { PlayIcon } from '@heroicons/react/24/solid';
-import {
-    BrowserRouter,
-    Link,
-    Routes,
-    Route,
-    useNavigate,
-  } from "react-router-dom";
-import Watch from '@/pages/Watch';
+import React from "react";
+import { PlayIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 
 interface PlayButtonProps {
   movieId: string;
@@ -18,29 +11,28 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
 
   return (
     <div>
-    <button 
-        onClick={() => navigate(`/watch/${movieId}`)} 
-      className="
-        bg-white 
-        rounded-md 
-        py-1 md:py-2 
-        px-2 md:px-4
+      <button
+        onClick={() => navigate(`/watch/${movieId}`)}
+        className="
+        flex 
         w-auto 
-        text-xs lg:text-lg 
+        flex-row items-center 
+        rounded-md bg-white
+        px-2 
+        py-1 text-xs 
         font-semibold
-        flex
-        flex-row
-        items-center
-        hover:bg-neutral-300
         transition
+        hover:bg-neutral-300
+        md:px-4
+        md:py-2
+        lg:text-lg
         "
       >
-        <PlayIcon className="w-4 md:w-7 text-black mr-1" />
+        <PlayIcon className="mr-1 w-4 text-black md:w-7" />
         Play
-    </button>
-    {/* <Watch movieId={movieId} /> */}
+      </button>
     </div>
   );
-}
+};
 
 export default PlayButton;

@@ -7,14 +7,9 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   key: string;
   data: Movie;
-  // setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
-  // movies: Movie[]
-}
+};
 
-
-
-const MovieCard = ({ data /*, movies, setMovies*/ }: Props) => {
-
+const MovieCard = ({ data }: Props) => {
   const movieId = data.imdbid;
   const navigate = useNavigate();
 
@@ -90,14 +85,13 @@ const MovieCard = ({ data /*, movies, setMovies*/ }: Props) => {
             >
               <PlayIcon className="w-4 text-black lg:w-6" />
             </div>
-            <FavoriteButton movie={data} /*setMovies={setMovies} movies={movies}*//>
-            {/* <FavoriteButton imdbid={data._id} /> */}
+            <FavoriteButton movie={data} />
             <p className="mt-4 font-semibold  text-amber-400">
               Year <span className="text-white">{data.year}</span>
             </p>
           </div>
-          <div className="mt-4 flex flex-row items-center gap-2 text-[10px] text-white lg:text-xl font-semibold">
-          <p>{data.title}</p>
+          <div className="mt-4 flex flex-row items-center gap-2 text-[10px] font-semibold text-white lg:text-xl">
+            <p>{data.title}</p>
           </div>
           <div className="mt-4 flex flex-row items-center gap-2 text-[8px] text-white lg:text-base">
             <p>{data.genre.join(", ")}</p>

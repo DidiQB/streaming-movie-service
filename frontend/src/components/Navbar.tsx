@@ -5,26 +5,14 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
-import {
-  BrowserRouter,
-  Link,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import AccountMenu from "@/components/AccountMenu";
 import MobileMenu from "@/components/MobileMenu";
-import NavbarItem from "@/components/NavbarItem";
-import FetchSearchbar from "../pages/FetchSearchbar";
 
 const TOP_OFFSET = 66;
 
-interface NavbarProps {
-  className?: string;
-}
-
-const Navbar = ({ className }: NavbarProps) => {
+const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -55,7 +43,6 @@ const Navbar = ({ className }: NavbarProps) => {
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
-  
 
   return (
     <nav className="fixed z-40 -mt-4 w-full">
@@ -64,20 +51,13 @@ const Navbar = ({ className }: NavbarProps) => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        {/* <Link
-          className="cursor-pointer  hover:text-amber-500"
+        <Link
+          className="cursor-pointer px-8 text-5xl font-semibold text-amber-400 transition hover:text-amber-500"
           onClick={() => navigate("/")}
           to="/"
         >
-          <img src="./src/assets/logo.png" className="h-4 lg:h-7" alt="Logo" />
-        </Link> */}
-                    <Link
-              className="cursor-pointer px-8 text-5xl text-amber-400 transition hover:text-amber-500 font-semibold"
-              onClick={() => navigate("/")}
-              to="/"
-            >
-              .NETchicks
-            </Link>
+          .NETchicks
+        </Link>
         <div className="ml-8 hidden flex-row gap-7 lg:flex">
           <div>
             <Link
@@ -102,14 +82,13 @@ const Navbar = ({ className }: NavbarProps) => {
               Search
             </Link>
             <Link
-              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500 invisible"
+              className="invisible cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/watch")}
               to="/watch"
             >
               Watch
             </Link>
           </div>
-          {/* <button onClick={() => navigate("/browse")} >Browse by Genre</button> */}
         </div>
         <div
           onClick={toggleMobileMenu}
@@ -126,7 +105,6 @@ const Navbar = ({ className }: NavbarProps) => {
         <div className="ml-auto flex flex-row items-center gap-7">
           <div className="cursor-pointer text-gray-200 transition hover:text-gray-300">
             <MagnifyingGlassIcon className="w-6" />
-            {/* <FetchSearchbar /> */}
           </div>
           <div className="cursor-pointer text-gray-200 transition hover:text-gray-300">
             <BellIcon className="w-6" />

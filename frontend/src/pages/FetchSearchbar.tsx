@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Movie } from "@/types/types";
 import MovieCard from "../components/MovieCard";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 interface RequestOptions {
@@ -50,14 +48,10 @@ const FetchSearchbar = () => {
   };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // prevent the default form submission behavior
-    const searchTerm = event.currentTarget.searchInput.value;
+    event.preventDefault();
     console.log("searchterm in Fetchsearchbar", searchResults);
     searchResults;
-    // setSearchTerm(searchTerm);
   };
-
-  const navigate = useNavigate();
 
   return (
     <div>

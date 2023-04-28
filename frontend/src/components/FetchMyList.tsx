@@ -3,10 +3,6 @@ import MovieCard from "./MovieCard";
 import { Movie } from "@/types/types";
 import { FavoriteMovieListContext } from "@/context/FavoriteMovieListContext";
 
-// interface Props {
-//   setMovies: React.Dispatch<React.SetStateAction<Movie>>;
-// }
-
 const FetchMyList = () => {
   const [favourites, setFavourites] = useState<Movie[]>([]);
 
@@ -56,12 +52,7 @@ const FetchMyList = () => {
       </div>
       <div className="grid grid-cols-4 gap-2">
         {favourites.map((movie) => (
-          <MovieCard
-            key={movie.imdbid}
-            data={movie}
-            setMovies={setFavourites}
-            movies={favourites}
-          />
+          <MovieCard key={movie.imdbid} data={movie} />
         ))}
       </div>
     </div>
