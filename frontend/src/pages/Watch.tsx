@@ -93,15 +93,16 @@ const Watch = () => {
           className="w-4 cursor-pointer text-white transition hover:opacity-80 md:w-10"
         />
         <p className="text-1xl font-bold text-white md:text-3xl">
-          <span className="font-light">Watching:</span> {movies?.title}
+          <span className="font-light">Watching:</span> {playMovie.title}
         </p>
       </nav>
-      <video
+      <iframe src={playMovie.trailer + "?autoplay=1&mute=1&loop=1"} allow='autoplay' className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"></iframe>
+      {/* <video
         className="h-full w-full"
         autoPlay
         controls
         src={movies?.trailer}
-      ></video>
+      ></video> */}
     </div>
   );
 };

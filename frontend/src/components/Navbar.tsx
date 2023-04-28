@@ -20,7 +20,11 @@ import FetchSearchbar from "../pages/FetchSearchbar";
 
 const TOP_OFFSET = 66;
 
-const Navbar = () => {
+interface NavbarProps {
+  className?: string;
+}
+
+const Navbar = ({ className }: NavbarProps) => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -51,6 +55,7 @@ const Navbar = () => {
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
+  
 
   return (
     <nav className="fixed z-40 -mt-4 w-full">
@@ -59,13 +64,20 @@ const Navbar = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <Link
+        {/* <Link
           className="cursor-pointer  hover:text-amber-500"
           onClick={() => navigate("/")}
           to="/"
         >
           <img src="./src/assets/logo.png" className="h-4 lg:h-7" alt="Logo" />
-        </Link>
+        </Link> */}
+                    <Link
+              className="cursor-pointer px-8 text-5xl text-amber-400 transition hover:text-amber-500 font-semibold"
+              onClick={() => navigate("/")}
+              to="/"
+            >
+              .NETchicks
+            </Link>
         <div className="ml-8 hidden flex-row gap-7 lg:flex">
           <div>
             <Link
@@ -84,20 +96,13 @@ const Navbar = () => {
             </Link>
             <Link
               className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
-              onClick={() => navigate("/my-list")}
-              to="/my-list"
-            >
-              My List
-            </Link>
-            <Link
-              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/search")}
               to="/search"
             >
               Search
             </Link>
             <Link
-              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500 invisible"
               onClick={() => navigate("/watch")}
               to="/watch"
             >

@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import FetchBillboard from "@/components/FetchBillboard";
+// import FetchBillboard from "@/components/FetchBillboard";
 import Billboard from "@/components/Billboard";
 import FetchMyList from "@/components/FetchMyList";
 import FetchAllMovies from "@/components/FetchAllMovies";
@@ -14,8 +14,8 @@ const Home = () => {
 
     return (<div>
          <div className="App">
-      {/* <Navbar /> */}
-      <FetchBillboard />
+      <Navbar />
+      {/* <FetchBillboard /> */}
       <Billboard oneMovie={oneMovie} />
       <div className="pb-40">
         <FetchMyList />

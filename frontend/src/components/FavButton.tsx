@@ -12,11 +12,11 @@ type MoviesList = Array<Movie>;
 
 type Props = {
   movie: Movie;
-  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
-  movies: Movie[];
+  // setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  // movies: Movie[];
 };
 
-function FavoriteButton({ movie, movies }: Props) {
+function FavoriteButton({ movie, /*movies*/ }: Props) {
   const [savedMovie, setSavedMovie] = useState<SavedMovie | null>(null);
   const { emitFavoriteListUpdate } = useContext(FavoriteMovieListContext);
 
@@ -108,6 +108,8 @@ function FavoriteButton({ movie, movies }: Props) {
     // }
   };
   const Icon = savedMovie ? CheckIcon : PlusIcon;
+  
+
 
   return (
     <div

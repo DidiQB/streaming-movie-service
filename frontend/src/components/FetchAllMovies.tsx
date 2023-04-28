@@ -49,7 +49,7 @@ const FetchAllMovies = () => {
         <div className="grid grid-cols-4 gap-2">
           {movies.map((movie) => (
             // <AllMovieCard key={movie.imdbid} data={movie} />
-            <MovieCard key={movie.imdbid} data={movie} />
+            <MovieCard key={movie.imdbid} data={movie} /*setMovies={setMovies}*/ />
 
 
           ))}

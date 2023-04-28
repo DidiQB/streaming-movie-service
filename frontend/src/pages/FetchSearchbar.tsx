@@ -61,7 +61,7 @@ const FetchSearchbar = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="mt-4 space-y-8 px-4 md:px-12">
         <div className="pt-20"></div>
         <form onSubmit={handleSearchSubmit}>

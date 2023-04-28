@@ -2,16 +2,21 @@ import React from "react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavButton";
 import { Movie } from "@/types/types";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
+  key: string;
   data: Movie;
-  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
-  movies: Movie[]
+  // setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  // movies: Movie[]
 }
 
 
 
-const MovieCard = ({ data, movies, setMovies }: Props) => {
+const MovieCard = ({ data /*, movies, setMovies*/ }: Props) => {
+
+  const movieId = data.imdbid;
+  const navigate = useNavigate();
 
   return (
     <div className="col-span group relative h-[12vw] bg-zinc-900">
@@ -80,14 +85,14 @@ const MovieCard = ({ data, movies, setMovies }: Props) => {
         >
           <div className="flex flex-row items-center gap-3">
             <div
-              onClick={() => {}}
+              onClick={() => navigate(`/watch/${movieId}`)}
               className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-white transition hover:bg-neutral-300 lg:h-10 lg:w-10"
             >
               <PlayIcon className="w-4 text-black lg:w-6" />
             </div>
-            <FavoriteButton movie={data} setMovies={setMovies} movies={movies}/>
+            <FavoriteButton movie={data} /*setMovies={setMovies} movies={movies}*//>
             {/* <FavoriteButton imdbid={data._id} /> */}
-            <p className="mt-4 font-semibold text-green-400">
+            <p className="mt-4 font-semibold  text-amber-400">
               Year <span className="text-white">{data.year}</span>
             </p>
           </div>
