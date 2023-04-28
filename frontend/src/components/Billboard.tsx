@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import FetchBillboard from "./FetchBillboard";
 import { Movie } from '@/types/types';
+import PlayButton from './PlayButton';
 
 // import PlayButton from '@/components/PlayButton';
 
@@ -29,6 +30,7 @@ const Billboard = ({ oneMovie }: Props) => {
         <p className="text-white text-[8px] md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl">
         {oneMovie.description}
         </p>
+        <PlayButton movieId={oneMovie?.imdbid}></PlayButton>
         <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
           {/* <PlayButton movieId={data?.id} /> */}
           <button
@@ -50,6 +52,7 @@ const Billboard = ({ oneMovie }: Props) => {
               transition
             "
             >
+
               <InformationCircleIcon className="w-4 md:w-7 mr-1" />
               More Info
           </button>

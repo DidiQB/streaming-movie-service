@@ -96,6 +96,13 @@ const Navbar = () => {
             >
               Search
             </Link>
+            <Link
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
+              onClick={() => navigate("/watch")}
+              to="/watch"
+            >
+              Watch
+            </Link>
           </div>
           {/* <button onClick={() => navigate("/browse")} >Browse by Genre</button> */}
         </div>

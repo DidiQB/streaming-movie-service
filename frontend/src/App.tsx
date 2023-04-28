@@ -12,6 +12,7 @@ import MyList from "./pages/MyList";
 import FetchSearchbar from "./pages/FetchSearchbar";
 import MoviesProvider from "./context/Context";
 import Navbar from "./components/Navbar";
+import Watch from "./pages/Watch";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/my-list" element={<MyList />}></Route>
         <Route path="/browse" element={<Genres />}></Route>
         <Route path="/search" element={<FetchSearchbar />}></Route>
+        <Route path="/watch/:imdbId" element={<Watch />}></Route>
       </Routes>
     </BrowserRouter>
     </MoviesProvider>

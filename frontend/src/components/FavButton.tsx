@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Movie } from "@/types/types";
 import { MovieContext } from "@/context/Context";
+import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+
 
 type SavedMovie = Movie & {
   imdbid: string;
@@ -109,13 +112,16 @@ const handleSave = async () => {
   
 
     // }
-  };
 
+  };
+  const Icon = savedMovie ? CheckIcon : PlusIcon;
+  
   return (
-    <div>
-      <button onClick={handleClick}>
+    <div onClick={handleClick} className="cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
+      <Icon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
+      {/* <button onClick={handleClick}>
         {savedMovie ? "Remove" : "Add"} Movie
-      </button>
+      </button> */}
     </div>
   );
 }
