@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import MovieCard from "./MovieCard";
 import { Movie } from "@/types/types";
-import { MovieContext } from "@/context/Context";
+import { FavoriteMovieListContext } from "@/context/FavoriteMovieListContext";
 
 // interface Props {
 //   setMovies: React.Dispatch<React.SetStateAction<Movie>>;
@@ -9,7 +9,10 @@ import { MovieContext } from "@/context/Context";
 
 const FetchMyList = () => {
   const [favourites, setFavourites] = useState<Movie[]>([]);
-  // const {movies, setMovies} = useContext(MovieContext);
+
+  const { subscribeToFavoriteListUpdates } = useContext(
+    FavoriteMovieListContext
+  );
 
   const getSavedMovies = async () => {
     try {
@@ -32,20 +35,35 @@ const FetchMyList = () => {
   };
 
   useEffect(() => {
+    // Get the saved movies initially:
     getSavedMovies();
+
+    //  Get the saved movies every time a fav button updates the list:
+    subscribeToFavoriteListUpdates(() => {
+      getSavedMovies();
+    });
   }, []);
 
   return (
-    <div className="px-4 md:px-12 mt-4 space-y-8">
-      <div className="flex flex-row"> 
-    <p className="text-white text-md md:text-xl lg:text-3xl font-semibold mb-5 mt-10 pr-4">My list</p>
-      <p className="text-white text-md md:text-xl lg:text-3xl font-semibold mb-5 mt-10">{favourites.length}</p>
+    <div className="mt-4 space-y-8 px-4 md:px-12">
+      <div className="flex flex-row">
+        <p className="text-md mb-5 mt-10 pr-4 font-semibold text-white md:text-xl lg:text-3xl">
+          My list
+        </p>
+        <p className="text-md mb-5 mt-10 font-semibold text-white md:text-xl lg:text-3xl">
+          {favourites.length}
+        </p>
       </div>
-    <div className="grid grid-cols-4 gap-2">
-      {favourites.map((movie) => (
-          <MovieCard key={movie.imdbid} data={movie} setMovies={setFavourites} movies={favourites}/>
-      ))}
-          </div>
+      <div className="grid grid-cols-4 gap-2">
+        {favourites.map((movie) => (
+          <MovieCard
+            key={movie.imdbid}
+            data={movie}
+            setMovies={setFavourites}
+            movies={favourites}
+          />
+        ))}
+      </div>
     </div>
   );
 };
