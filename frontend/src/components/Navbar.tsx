@@ -25,7 +25,6 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
 
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,38 +53,44 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed z-40 w-full">
+    <nav className="fixed z-40 -mt-4 w-full">
       <div
         className={`flex flex-row items-center px-4 py-6 transition duration-500 md:px-16 ${
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <img src="./src/assets/logo.png" className="h-4 lg:h-7" alt="Logo" />
+        <Link
+          className="cursor-pointer  hover:text-amber-500"
+          onClick={() => navigate("/")}
+          to="/"
+        >
+          <img src="./src/assets/logo.png" className="h-4 lg:h-7" alt="Logo" />
+        </Link>
         <div className="ml-8 hidden flex-row gap-7 lg:flex">
           <div>
             <Link
-              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/")}
               to="/"
             >
               Home
             </Link>
             <Link
-              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/browse")}
               to="/browse"
             >
               Browse by Genre
             </Link>
             <Link
-              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/my-list")}
               to="/my-list"
             >
               My List
             </Link>
             <Link
-              className="cursor-pointer text-xl text-gray-200 transition hover:text-gray-300 px-8"
+              className="cursor-pointer px-8 text-xl text-gray-200 transition hover:text-amber-500"
               onClick={() => navigate("/search")}
               to="/search"
             >

@@ -64,6 +64,7 @@ const FetchSearchbar = () => {
  <div>
   {/* <Navbar /> */}
     <div className="mt-4 space-y-8 px-4 md:px-12">
+      <div className="pt-20"></div>
       <form onSubmit={handleSearchSubmit}>
         <input className="py-2 pl-4" placeholder="Search for anything..." 
           type="text"
@@ -71,7 +72,7 @@ const FetchSearchbar = () => {
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button className="rounded-r-lg bg-amber-400 px-8 py-2  text-white" type="submit">Click Me</button>
+        <button className="rounded-r-lg bg-amber-400 hover:bg-amber-500 px-8 py-2  text-white" type="submit">Click Me</button>
       </form>
       <div className="grid grid-cols-4 gap-2">
         {searchResults
