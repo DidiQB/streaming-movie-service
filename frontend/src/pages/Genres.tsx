@@ -3,6 +3,7 @@ import { Movie } from "@/types/types";
 import MovieCard from "@/components/MovieCard";
 import { MovieContext } from "@/context/Context";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Genres = () => {
   const [selectedGenre, setSelectedGenre] = useState<string>("");
@@ -59,6 +60,7 @@ const Genres = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

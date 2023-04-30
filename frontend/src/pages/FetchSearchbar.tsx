@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Movie } from "@/types/types";
 import MovieCard from "../components/MovieCard";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 interface RequestOptions {
   method: string;
@@ -30,7 +31,7 @@ const FetchSearchbar = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch(
-        // `https://imdb-top-100-movies.p.rapidapi.com/movies?q=${searchTerm}`
+        // `https://imdb-top-100-movies.p.rapidapi.com/movies?q=${searchTerm}`,
         `http://localhost:3001/search?title=${searchTerm}`,
         options
       );
@@ -80,6 +81,7 @@ const FetchSearchbar = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -6,7 +6,6 @@ import FetchSearchbar from "./pages/FetchSearchbar";
 import MoviesProvider from "./context/Context";
 import FavoriteMovieListContextProvider from "./context/FavoriteMovieListContext";
 import Watch from "./pages/Watch";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
             <Route path="/search" element={<FetchSearchbar />}></Route>
             <Route path="/watch/:movieId" element={<Watch />}></Route>
           </Routes>
-          <Footer />
         </BrowserRouter>
       </FavoriteMovieListContextProvider>
     </MoviesProvider>

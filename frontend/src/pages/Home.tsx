@@ -6,9 +6,10 @@ import FetchAllMovies from "@/components/FetchAllMovies";
 import React from "react";
 import { useState } from "react";
 import { Movie } from "@/types/types";
+import Footer from "@/components/Footer";
 
 const Home = () => {
-  const [oneMovie, setOneMovie] = useState<Movie>();
+  const [oneMovie] = useState<Movie>();
 
   return (
     <div>
@@ -21,6 +22,7 @@ const Home = () => {
           <FetchAllMovies />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
