@@ -26,7 +26,7 @@ const FetchAllMovies = () => {
 
   useEffect(() => {
     fetch(
-      'https://imdb-top-100-movies.p.rapidapi.com/' /*`http://localhost:3001/search`*/,
+      /*'https://imdb-top-100-movies.p.rapidapi.com/'*/ `http://localhost:3001/search`,
       options
     )
       .then((response) => response.json())

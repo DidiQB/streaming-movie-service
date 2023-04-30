@@ -33,7 +33,7 @@ const Genres = () => {
         <div className="pt-20"></div>
         <div>
           <p className="text-md mb-4 font-semibold text-white md:text-xl lg:text-2xl">
-            Browse by Genres
+            Browse by Genre
           </p>
           <div className="mb-4 flex items-center gap-2">
             <label htmlFor="genres" className="font-semibold text-white">
